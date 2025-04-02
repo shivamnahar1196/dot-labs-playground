@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: dbt_snahar
+    database: dbt_workspace
+    tables:
+      - name: jaffle_shop_customers
+      - name: jaffle_shop_orders
+
+# `dbt_workspace`.`dbt_snahar`.`jaffle_shop_customers`

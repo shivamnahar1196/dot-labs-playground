@@ -1,6 +1,22 @@
-select
-    id as customer_id,
-    first_name,
-    last_name
+with
 
-from jaffle_shop_customers
+source as (
+
+    select * from {{ source('dbt_snahar','jaffle_shop_customers') }}
+
+),
+
+transformed as (
+
+    select 
+
+        id as customer_id,
+        last_name as surname,
+        first_name as givenname,
+        first_name || ' ' || last_name as full_name
+
+    from source
+
+)
+
+select * from transformed
